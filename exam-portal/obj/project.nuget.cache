@@ -1,8 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "UnXEypkEzlyckMhiDfZk0CjulI2Jxjgb0XhCYJyBhOvRpHulfOaF+QGqXdHnnIR/Hq4O0ql1d2PjvrQ1pWJmvQ==",
+  "dgSpecHash": "DmTjQwffN+zEFWMBnEyLVu+1WsyfcrDrPU3LlSPdYZoLaU/cuLKjHTBIPMWHBIT+QkgtjjSCvYvBTORZY8o3eQ==",
   "success": true,
   "projectFilePath": "D:\\CSE\\CSE416\\exam-portal\\exam-portal\\exam-portal\\exam-portal.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.0-preview.3.24172.4\\microsoft.entityframeworkcore.9.0.0-preview.3.24172.4.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.0-preview.3.24172.4\\microsoft.entityframeworkcore.abstractions.9.0.0-preview.3.24172.4.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.0-preview.3.24172.4\\microsoft.entityframeworkcore.analyzers.9.0.0-preview.3.24172.4.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.0-preview.3.24172.9\\microsoft.extensions.caching.abstractions.9.0.0-preview.3.24172.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.0-preview.3.24172.9\\microsoft.extensions.caching.memory.9.0.0-preview.3.24172.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.0-preview.3.24172.9\\microsoft.extensions.dependencyinjection.9.0.0-preview.3.24172.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0-preview.3.24172.9\\microsoft.extensions.dependencyinjection.abstractions.9.0.0-preview.3.24172.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.logging\\9.0.0-preview.3.24172.9\\microsoft.extensions.logging.9.0.0-preview.3.24172.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.0-preview.3.24172.9\\microsoft.extensions.logging.abstractions.9.0.0-preview.3.24172.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.options\\9.0.0-preview.3.24172.9\\microsoft.extensions.options.9.0.0-preview.3.24172.9.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.0-preview.3.24172.9\\microsoft.extensions.primitives.9.0.0-preview.3.24172.9.nupkg.sha512"
+  ],
   "logs": []
 }
