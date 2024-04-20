@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("exam-portal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d44152ce4c4a51b2c683f0378f6a361aa30725e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("exam-portal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("exam-portal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
