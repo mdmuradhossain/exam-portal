@@ -1,0 +1,16 @@
+﻿@page
+@model User
+@{
+}
+
+<form asp-action="SignUp" method="post">
+    <input type="text" name="username" placeholder="Username" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="email" name="email" placeholder="write your email" />
+    <input type="text" name="name" placeholder="write your name" />
+    <select name="role">
+        <option value="Teacher">Teacher</option>
+        <option value="Student">Student</option>
+    </select>
+    <button type="submit">Sign Up</button>
+</form>

@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Exam
+
+<div class="list-group">
+    @foreach (var exam in ViewBag.Exams)
+    {
+        <a href="#" class="list-group-item list-group-item-action active m-3" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@exam.Title</h5>
+            </div>
+            <a href="@Url.Action("View", "Exam", new { id = exam.ExamId })">View</a>
+        </a>
+    }
+ </div>

@@ -1,0 +1,84 @@
+﻿@*
+    
+*@
+@{
+}
+@model Exam
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="Title" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="Description" class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="duration">Duration (in minutes):</label>
+        <input type="text" id="duration" name="Duration" class="form-control" required>
+    </div>
+    <div class="form-group">
+        @if (ViewBag.Questions != null)
+        @foreach (var question in ViewBag.Questions)
+        {
+                        <div>
+                            <label>
+                        <input type="checkbox" name="SelectedQuestionIds" value="@question.QuestionId" />
+                    @question.Text
+                            </label>
+                        </div>
+        }
+                
+    </div>
+
+    <!-- Button to add selected questions to the exam -->
+    <button id="addQuestions">Add Selected Questions to Exam</button>
+
+    <!-- Display selected questions -->
+    <h2>Selected Questions</h2>
+    <ul id="selectedQuestionsList"></ul>
+
+    <button type="submit" class="btn btn-primary">Create Exam</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        var selectedQuestions = [];
+
+        // Add selected questions to the exam
+        $('#addQuestions').click(function () {
+            $('input[name="selectedQuestions"]:checked').each(function () {
+                var questionId = $(this).val();
+                var questionText = $(this).closest('label').text();
+                selectedQuestions.push({ id: questionId, text: questionText });
+                $(this).prop('checked', false);
+            });
+            renderSelectedQuestions();
+        });
+
+        // Save the exam
+        $('#saveExam').click(function () {
+            // Send selectedQuestions to the server to save the exam
+            $.ajax({
+                type: 'POST',
+                url: '/Exam/Create',
+                data: { selectedQuestions: selectedQuestions },
+                success: function () {
+                    alert('Exam saved successfully!');
+                },
+                error: function () {
+                    alert('Failed to save exam.');
+                }
+            });
+        });
+
+        // Render selected questions list
+        function renderSelectedQuestions() {
+            $('#selectedQuestionsList').empty();
+            $.each(selectedQuestions, function (index, question) {
+                $('#selectedQuestionsList').append('<li>' + question.text + '</li>');
+            });
+        }
+    });
+</script>

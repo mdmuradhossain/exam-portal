@@ -1,0 +1,83 @@
+﻿@*
+   
+*@
+
+@{
+}
+
+@model Question
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        @if (ViewBag.Exams != null)
+        {
+
+            <select asp-for="ExamId" class="form-control">
+                <option value="0">Choose Exam</option>
+                @foreach (var exam in ViewBag.Exams)
+                {
+                    <option asp-for="ExamId" value="@exam.ExamId">@exam.Title</option>
+                }
+        </select>
+        }
+    </div>
+    <div class="form-group">
+        <label asp-for="Text" class="control-label"></label>
+        <input asp-for="Text" class="form-control" />
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type" class="control-label"></label>
+        <select asp-for="Type" class="form-control" onchange="showOptions(this.value)">
+            <option value="MultipleChoice">Multiple Choice</option>
+            <option value="TrueFalse">True/False</option>
+            <option value="Essay">Essay</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div id="options-container" class="form-group" style="display: none;">
+        <!-- Options will be shown here based on the selected question type -->
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Question</button>
+</form>
+
+@section Scripts {
+    <script>
+        function showOptions(type) {
+            var container = document.getElementById('options-container');
+            container.innerHTML = ''; // Clear existing options
+
+            if (type === 'MultipleChoice') {
+                for (var i = 1; i <= 4; i++) {
+                    var optionInput = document.createElement('input');
+                    optionInput.type = 'text';
+                    optionInput.name = 'Options[' + (i - 1) + '].Text';
+                    optionInput.placeholder = 'Option ' + i + ' Text';
+                    optionInput.classList.add('form-control');
+
+                    container.appendChild(optionInput);
+                }
+            } else if (type === 'TrueFalse') {
+                var optionYesInput = document.createElement('input');
+                optionYesInput.type = 'text';
+                optionYesInput.name = 'Options[0].Text';
+                optionYesInput.placeholder = 'Option 1 Text (Yes)';
+                optionYesInput.classList.add('form-control');
+
+                var optionNoInput = document.createElement('input');
+                optionNoInput.type = 'text';
+                optionNoInput.name = 'Options[1].Text';
+                optionNoInput.placeholder = 'Option 2 Text (No)';
+                optionNoInput.classList.add('form-control');
+
+                container.appendChild(optionYesInput);
+                container.appendChild(optionNoInput);
+            }
+
+            container.style.display = 'block'; // Show the options container
+        }
+    </script>
+}
