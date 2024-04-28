@@ -3,5 +3,11 @@
 *@
 @{
 }
+@model exam_portal.Models.Exam;
 
 <h1>Student</h1>
+
+<nav class="nav flex-column">
+    <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <a href="@Url.Action("Index", "ExamView", new { id = @Model.ExamId })">Take</a>
+</nav>

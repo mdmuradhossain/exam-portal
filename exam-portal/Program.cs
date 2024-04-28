@@ -72,4 +72,16 @@ app.MapControllerRoute(
     defaults: new { controller = "Exam", action = "View" }
 );
 
+app.MapControllerRoute(
+    name: "ExamViewExam",
+    pattern: "ExamView/{id}",
+    defaults: new { controller = "ExamView", action = "Index" }
+);
+
+app.MapControllerRoute(
+    name: "ExamViewExam",
+    pattern: "Exam/Answers",
+    defaults: new { controller = "ExamView", action = "Answers" }
+);
+
 app.Run();

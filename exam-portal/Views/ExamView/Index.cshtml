@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model exam_portal.Models.ExamAnswerViewModel;
+
+<h1>Take Exam</h1>
+
+
+<h1>@Model.Exam.Title</h1>
+<p>@Model.Exam.Description</p>
+<form method="post" asp-action="Submit">
+    <input type="number" name="AnswerExamId" value="@Model.Exam.ExamId" /> <!-- Hidden input for AnswerExamId -->
+    @if (Model.Exam.Questions != null)
+    {
+        foreach (var question in Model.Exam.Questions)
+        {
+            <div>
+                <input type="hidden" name="Answers[@Model.Exam.ExamId][@question.QuestionId].QuestionId" value="@question.QuestionId" /> <!-- Hidden input for QuestionId -->
+                <p>@question.Text</p>
+                @if (question.Type == QuestionType.MultipleChoice)
+                {
+                    foreach (var option in question.Options)
+                    {
+                        <input type="checkbox" name="Answers[@Model.Exam.ExamId][@question.QuestionId].SelectedOptionIds" value="@option.Id" id="option_@option.Id">
+                        <label for="option_@option.Id">@option.Text</label>
+                        <br>
+                    }
+                }
+                else if (question.Type == QuestionType.TrueFalse)
+                {
+                    foreach (var option in question.Options)
+                    {
+                        <input type="radio" name="Answers[@Model.Exam.ExamId][@question.QuestionId].SelectedOptionId" value="@option.Id" id="option_@option.Id">
+                        <label for="option_@option.Id">@option.Text</label>
+                        <br>
+                    }
+                }
+                else if (question.Type == QuestionType.Essay)
+                {
+                    <textarea name="Answers[@Model.Exam.ExamId][@question.QuestionId].TextAnswer" rows="4" cols="50"></textarea>
+                    <br>
+                }
+            </div>
+        }
+    }
+    @Html.AntiForgeryToken() <!-- Render Anti-Forgery Token -->
+    <button type="submit">Submit Exam</button>
+</form>

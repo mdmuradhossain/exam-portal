@@ -30,6 +30,7 @@
     <div class="form-group">
         <label asp-for="Type" class="control-label"></label>
         <select asp-for="Type" class="form-control" onchange="showOptions(this.value)">
+            <option value="0">Choose Type</option>
             <option value="MultipleChoice">Multiple Choice</option>
             <option value="TrueFalse">True/False</option>
             <option value="Essay">Essay</option>

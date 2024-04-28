@@ -7,5 +7,4 @@
 @model exam_portal.Models.Exam;
 
 <h1>Name: @Model.Title</h1>
-
-@Model.
+<a href="@Url.Action("Index", "ExamView", new { id = @Model.ExamId })">Take</a>

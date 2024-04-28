@@ -26,12 +26,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/CSE/CSE416/exam-portal/exam-portal/exam-portal/Views/Answer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5zd2VyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/CSE/CSE416/exam-portal/exam-portal/exam-portal/Views/Dashboard/StudentDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFN0dWRlbnREYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CSE/CSE416/exam-portal/exam-portal/exam-portal/Views/Dashboard/TeacherDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFRlYWNoZXJEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE/CSE416/exam-portal/exam-portal/exam-portal/Views/ExamView/Answers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVZpZXdcQW5zd2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/CSE/CSE416/exam-portal/exam-portal/exam-portal/Views/ExamView/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhhbVZpZXdcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/CSE/CSE416/exam-portal/exam-portal/exam-portal/Views/Exam/Create.cshtml]

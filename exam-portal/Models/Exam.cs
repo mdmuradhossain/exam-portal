@@ -17,5 +17,6 @@ namespace exam_portal.Models
 
         //public List<Question> Questions { get; set; }
         public ICollection<Question>? Questions { get; set; }
+        public ICollection<Answer>? Answers { get; set; }
     }
 }

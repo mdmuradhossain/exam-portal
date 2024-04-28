@@ -9,6 +9,10 @@ namespace exam_portal.Models
         public DbSet<Question>  Questions { get; set; }
         public DbSet<Exam> Exams { get; set; }
 
+        public DbSet<Answer> Answers { get; set; }
+        //public DbSet<ExamAnswerViewModel> Answers { get; set; }
+        //public DbSet<ExamAnswerViewModel> Exams { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -33,6 +37,9 @@ namespace exam_portal.Models
             .HasMany(a => a.Questions) // Author has many Books, specifies the 'many' side of the relationship
             .WithOne(b => b.Exam) // Book is associated with one Author, specifies the 'one' side of the relationship
             .HasForeignKey(b => b.ExamId);
+
+          
+
         }
 
     }

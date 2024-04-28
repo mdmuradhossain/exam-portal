@@ -18,6 +18,8 @@ namespace exam_portal.Models
         // Navigation property
         public Exam? Exam { get; set; }
 
+        public ICollection<Answer>? Answers { get; set; }
+
     }
 
     public enum QuestionType

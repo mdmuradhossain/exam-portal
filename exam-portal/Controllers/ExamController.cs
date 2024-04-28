@@ -58,17 +58,26 @@ namespace exam_portal.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Exam exam, IFormCollection form)
         {
-            var selectedQuestionIds = form["SelectedQuestionIds"]
-            .SelectMany(id => id.Split(','))
-            .Select(id => int.Parse(id))
-            .ToList();
+            // Retrieve selected question IDs from the form
+            var selectedQuestionIds = form["SelectedQuestionIds"];
 
-            var selectedQuestions = _context.Questions
-            .Where(q => selectedQuestionIds.Contains(q.QuestionId))
-            .ToList();
+            // Check if any questions were selected
+            if (selectedQuestionIds.Count > 0)
+            {
+                // Convert selected question IDs to integers
+                var parsedQuestionIds = selectedQuestionIds
+                    .Select(id => int.Parse(id))
+                    .ToList();
 
-            // Associate the selected questions with the exam
-            exam.Questions = selectedQuestions;
+                // Retrieve selected questions from the database
+                var selectedQuestions = _context.Questions
+                    .Where(q => parsedQuestionIds.Contains(q.QuestionId))
+                    .ToList();
+
+                // Associate the selected questions with the exam
+                exam.Questions = selectedQuestions;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(exam);

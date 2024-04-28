@@ -79,6 +79,34 @@ namespace exam_portal.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Answers",
+                columns: table => new
+                {
+                    AnswerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AnswerExamId = table.Column<int>(type: "int", nullable: true),
+                    AnswerQuestionId = table.Column<int>(type: "int", nullable: true),
+                    SelectedOptionId = table.Column<int>(type: "int", nullable: true),
+                    TextAnswer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ExamId = table.Column<int>(type: "int", nullable: true),
+                    QuestionId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answers", x => x.AnswerId);
+                    table.ForeignKey(
+                        name: "FK_Answers_Exams_ExamId",
+                        column: x => x.ExamId,
+                        principalTable: "Exams",
+                        principalColumn: "ExamId");
+                    table.ForeignKey(
+                        name: "FK_Answers_Questions_QuestionId",
+                        column: x => x.QuestionId,
+                        principalTable: "Questions",
+                        principalColumn: "QuestionId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OptionModel",
                 columns: table => new
                 {
@@ -99,6 +127,16 @@ namespace exam_portal.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Answers_ExamId",
+                table: "Answers",
+                column: "ExamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionId",
+                table: "Answers",
+                column: "QuestionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OptionModel_QuestionId",
                 table: "OptionModel",
                 column: "QuestionId");
@@ -112,6 +150,9 @@ namespace exam_portal.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Answers");
+
             migrationBuilder.DropTable(
                 name: "OptionModel");
 

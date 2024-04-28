@@ -12,7 +12,7 @@ using exam_portal.Models;
 namespace exam_portal.Migrations
 {
     [DbContext(typeof(DbContextSetup))]
-    [Migration("20240427092826_initial")]
+    [Migration("20240428115229_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -24,6 +24,42 @@ namespace exam_portal.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("exam_portal.Models.Answer", b =>
+                {
+                    b.Property<int>("AnswerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnswerId"));
+
+                    b.Property<int?>("AnswerExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AnswerQuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SelectedOptionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TextAnswer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AnswerId");
+
+                    b.HasIndex("ExamId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answers");
+                });
 
             modelBuilder.Entity("exam_portal.Models.Exam", b =>
                 {
@@ -149,6 +185,17 @@ namespace exam_portal.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("exam_portal.Models.Answer", b =>
+                {
+                    b.HasOne("exam_portal.Models.Exam", null)
+                        .WithMany("Answers")
+                        .HasForeignKey("ExamId");
+
+                    b.HasOne("exam_portal.Models.Question", null)
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId");
+                });
+
             modelBuilder.Entity("exam_portal.Models.OptionModel", b =>
                 {
                     b.HasOne("exam_portal.Models.Question", null)
@@ -170,11 +217,15 @@ namespace exam_portal.Migrations
 
             modelBuilder.Entity("exam_portal.Models.Exam", b =>
                 {
+                    b.Navigation("Answers");
+
                     b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("exam_portal.Models.Question", b =>
                 {
+                    b.Navigation("Answers");
+
                     b.Navigation("Options");
                 });
 #pragma warning restore 612, 618
