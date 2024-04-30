@@ -9,5 +9,5 @@
 
 <nav class="nav flex-column">
     <a class="nav-link active" aria-current="page" href="#">Home</a>
-    <a href="@Url.Action("Index", "ExamView", new { id = @Model.ExamId })">Take</a>
+    <a class="nav-link" asp-area="" asp-controller="Exam" asp-action="Index">View All Exam</a>
 </nav>

@@ -44,26 +44,23 @@ namespace exam_portal.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Submit(ExamAnswerViewModel viewModel)
         {
-            if (viewModel.Answers == null || viewModel.Exam.Questions == null)
+            if (!ModelState.IsValid || viewModel.Answers == null || viewModel.Exam.Questions == null)
             {
-                // Handle case where no answers are submitted or no questions exist
+                // Handle invalid ModelState or missing answers/questions
                 // Redirect to exam index or any appropriate action
-                return RedirectToAction(nameof(Answers)); // Redirect to exam index or any appropriate action
+                return RedirectToAction(nameof(Answers));
             }
 
-            // Process submitted answers and save to the database
-            for (int i = 0; i < viewModel.Answers.Count; i++)
+            // Process and save submitted answers to the database
+            foreach (var answer in viewModel.Answers)
             {
-                var answer = viewModel.Answers[i];
-                var questionId = viewModel.Exam.Questions.ElementAtOrDefault(i)?.QuestionId;
-
-                if (questionId != null)
+                if (answer.AnswerId != null)
                 {
                     // Create a new Answer object for each submitted answer
                     var newAnswer = new Answer
                     {
                         AnswerExamId = viewModel.Exam.ExamId,
-                        AnswerQuestionId = questionId.Value,
+                        AnswerQuestionId = answer.AnswerId,
                         TextAnswer = answer.TextAnswer
                     };
 
@@ -76,9 +73,8 @@ namespace exam_portal.Controllers
             _context.SaveChanges();
 
             // Optionally, you can redirect to a confirmation page or display a message
-            return RedirectToAction(nameof(Answers)); // Redirect to a confirmation action or any appropriate action
+            return RedirectToAction(nameof(Answers));
         }
-
 
 
         public IActionResult Answers()

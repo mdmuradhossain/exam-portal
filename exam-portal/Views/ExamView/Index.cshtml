@@ -3,49 +3,57 @@
 *@
 @{
 }
-
 @model exam_portal.Models.ExamAnswerViewModel;
 
 <h1>Take Exam</h1>
 
-
 <h1>@Model.Exam.Title</h1>
 <p>@Model.Exam.Description</p>
+
 <form method="post" asp-action="Submit">
-    <input type="number" name="AnswerExamId" value="@Model.Exam.ExamId" /> <!-- Hidden input for AnswerExamId -->
+    <input type="hidden" name="AnswerExamId" value="@Model.Exam.ExamId" /> <!-- Hidden input for AnswerExamId -->
     @if (Model.Exam.Questions != null)
     {
+        var index = 0;
         foreach (var question in Model.Exam.Questions)
         {
             <div>
-                <input type="hidden" name="Answers[@Model.Exam.ExamId][@question.QuestionId].QuestionId" value="@question.QuestionId" /> <!-- Hidden input for QuestionId -->
+                <input type="hidden" name="Answers[@index].QuestionId" value="@question.QuestionId" /> <!-- Hidden input for QuestionId -->
                 <p>@question.Text</p>
+
                 @if (question.Type == QuestionType.MultipleChoice)
                 {
+                    var optionIndex = 0;
                     foreach (var option in question.Options)
                     {
-                        <input type="checkbox" name="Answers[@Model.Exam.ExamId][@question.QuestionId].SelectedOptionIds" value="@option.Id" id="option_@option.Id">
+                        <input type="checkbox" name="Answers[@index].SelectedOptionIds[@optionIndex]" value="@option.Id" id="option_@option.Id">
                         <label for="option_@option.Id">@option.Text</label>
                         <br>
+                        optionIndex++;
                     }
                 }
                 else if (question.Type == QuestionType.TrueFalse)
                 {
+                    var optionIndex = 0;
                     foreach (var option in question.Options)
                     {
-                        <input type="radio" name="Answers[@Model.Exam.ExamId][@question.QuestionId].SelectedOptionId" value="@option.Id" id="option_@option.Id">
+                        <input type="radio" name="Answers[@index].SelectedOptionId" value="@option.Id" id="option_@option.Id">
                         <label for="option_@option.Id">@option.Text</label>
                         <br>
+                        optionIndex++;
                     }
                 }
                 else if (question.Type == QuestionType.Essay)
                 {
-                    <textarea name="Answers[@Model.Exam.ExamId][@question.QuestionId].TextAnswer" rows="4" cols="50"></textarea>
+                    <textarea name="Answers[@index].TextAnswer" rows="4" cols="50"></textarea>
                     <br>
                 }
             </div>
+            index++;
         }
     }
+
     @Html.AntiForgeryToken() <!-- Render Anti-Forgery Token -->
     <button type="submit">Submit Exam</button>
 </form>
+
