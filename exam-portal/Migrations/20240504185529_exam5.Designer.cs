@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using exam_portal.Models;
 
@@ -11,9 +12,11 @@ using exam_portal.Models;
 namespace exam_portal.Migrations
 {
     [DbContext(typeof(DbContextSetup))]
-    partial class DbContextSetupModelSnapshot : ModelSnapshot
+    [Migration("20240504185529_exam5")]
+    partial class exam5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
