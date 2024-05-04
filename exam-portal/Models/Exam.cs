@@ -6,10 +6,10 @@ namespace exam_portal.Models
     {
         public int ExamId { get; set; }
         public string Title { get; set; }
-        //public string CourseTitle { get; set; }
+        public string CourseTitle { get; set; }
 
-        //public string DepartmentName { get; set; }
-        public string Description { get; set; }
+        public string? DepartmentName { get; set; }
+        public string? Description { get; set; }
         public int TotalMarks { get; set; }
         public TimeSpan Duration { get; set; }
 

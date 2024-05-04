@@ -8,6 +8,7 @@
 @model Question
 
 <form asp-action="Create" method="post">
+    <h1>Create Question</h1>
     <div class="form-group">
         @if (ViewBag.Exams != null)
         {
@@ -21,12 +22,13 @@
         </select>
         }
     </div>
+    <br />
     <div class="form-group">
         <label asp-for="Text" class="control-label"></label>
         <input asp-for="Text" class="form-control" />
         <span asp-validation-for="Text" class="text-danger"></span>
     </div>
-
+    <br />
     <div class="form-group">
         <label asp-for="Type" class="control-label"></label>
         <select asp-for="Type" class="form-control" onchange="showOptions(this.value)">
@@ -37,11 +39,11 @@
         </select>
         <span asp-validation-for="Type" class="text-danger"></span>
     </div>
-
+    <br />
     <div id="options-container" class="form-group" style="display: none;">
         <!-- Options will be shown here based on the selected question type -->
     </div>
-
+    <br />
     <button type="submit" class="btn btn-primary">Create Question</button>
 </form>
 

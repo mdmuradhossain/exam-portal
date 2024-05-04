@@ -6,18 +6,31 @@
 @model Exam
 
 <form asp-action="Create" method="post">
+    <h1>Create Exam</h1>
     <div class="form-group">
         <label for="title">Title:</label>
         <input type="text" id="title" name="Title" class="form-control" required>
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="courseTitle">Course Title:</label>
+        <input type="text" id="courseTitle" name="CourseTitle" class="form-control" required>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="department">Department:</label>
+        <textarea id="department" name="DepartmentName" class="form-control" required></textarea>
     </div>
     <div class="form-group">
         <label for="description">Description:</label>
         <textarea id="description" name="Description" class="form-control" required></textarea>
     </div>
+    <br />
     <div class="form-group">
         <label for="duration">Duration (in minutes):</label>
         <input type="text" id="duration" name="Duration" class="form-control" required>
     </div>
+    <br />
     <div class="form-group">
         @if (ViewBag.Questions != null)
         @foreach (var question in ViewBag.Questions)
@@ -31,14 +44,14 @@
         }
                 
     </div>
-
+    <br />
     <!-- Button to add selected questions to the exam -->
     <button id="addQuestions">Add Selected Questions to Exam</button>
 
     <!-- Display selected questions -->
     <h2>Selected Questions</h2>
     <ul id="selectedQuestionsList"></ul>
-
+    <br />
     <button type="submit" class="btn btn-primary">Create Exam</button>
 </form>
 
