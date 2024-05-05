@@ -1,4 +1,6 @@
 # Online Exam Portal
+**Tools Used:** Asp.net MVC, Entity Framework, Razor, HTML, CSS, Javascript, MSSQL
+---
 ![Home](https://github.com/mdmuradhossain/exam-portal/blob/main/exam-portal/screenshots/Screenshot%202024-05-05%20012812.png)
 ![Login](https://github.com/mdmuradhossain/exam-portal/blob/main/exam-portal/screenshots/Screenshot%202024-05-05%20012824.png)
 ![Sign Up](https://github.com/mdmuradhossain/exam-portal/blob/main/exam-portal/screenshots/Screenshot%202024-05-05%20012837.png)
